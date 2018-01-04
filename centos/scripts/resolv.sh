@@ -1,6 +1,6 @@
 #!/bin/bash -eux
 
-sudo service resolvconf stop
+#sudo service resolvconf stop
 
 sudo bash -c 'cat <<EOF >/etc/resolv.conf
 nameserver 10.96.0.10

@@ -30,4 +30,12 @@ sudo yum install -y \
 
 #Install kubernetes
 sleep 2
-yum install docker kubeadm-1.7.4-0 kubectl-1.7.4-0 kubelet-1.7.4-0 -y
+sudo yum install docker kubeadm-1.7.4-0 kubectl-1.7.4-0 kubelet-1.7.4-0 -y
+sleep 3
+sudo yum install "kernel-devel-uname-r == $(uname -r)"
+sleep 2
+systemctl restart docker && systemctl enable docker
+systemctl  restart kubelet && systemctl enable kubelet
+
+
+
