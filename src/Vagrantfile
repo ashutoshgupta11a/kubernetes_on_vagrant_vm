@@ -2,8 +2,8 @@
 # vi: set ft=ruby :
 VAGRANTFILE_API_VERSION = "2"
 
-public_ip_list = ["", "10.87.65.235", "10.87.65.236", "10.87.65.237", "10.87.65.238"]
-private_ip_list = ["", "10.10.65.235", "10.10.65.236", "10.10.65.237", "10.10.65.238"]
+public_ip_list = [""]
+private_ip_list = [""]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 

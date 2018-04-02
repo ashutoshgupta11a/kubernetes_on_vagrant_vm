@@ -28,6 +28,35 @@ sudo yum install -y \
 	docker.io
 
 
+sudo yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine \
+                  docker-ce
+
+sudo yum install -y yum-utils \
+  device-mapper-persistent-data \
+  lvm2
+
+sudo -E yum-config-manager \
+    --add-repo \
+    "$DOCKERURL/centos/docker-ee.repo"
+
+sudo yum -y install docker-ee
+
 #Install kubernetes
 sleep 2
-yum install docker kubeadm-1.7.4-0 kubectl-1.7.4-0 kubelet-1.7.4-0 -y
+yum install docker kubeadm kubectl kubelet -y
+
+sleep 2
+swapoff -a
+
+sleep 2
+
+echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
