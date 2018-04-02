@@ -52,6 +52,7 @@ sudo yum -y install docker-ee
 
 #Install kubernetes
 sleep 2
+<<<<<<< HEAD
 yum install docker kubeadm kubectl kubelet -y
 
 sleep 2
@@ -60,3 +61,9 @@ swapoff -a
 sleep 2
 
 echo '1' > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+sleep 2
+systemctl restart docker && systemctl enable docker
+systemctl  restart kubelet && systemctl enable kubelet
+
+
