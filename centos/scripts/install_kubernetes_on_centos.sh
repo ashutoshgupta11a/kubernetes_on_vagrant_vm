@@ -52,7 +52,7 @@ sudo yum -y install docker-ee
 
 #Install kubernetes
 sleep 2
-<<<<<<< HEAD
+
 yum install docker kubeadm kubectl kubelet -y
 
 sleep 2

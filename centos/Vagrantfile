@@ -2,19 +2,19 @@
 # vi: set ft=ruby :
 VAGRANTFILE_API_VERSION = "2"
 
-public_ip_list = [ "10.87.65.252"]
-private_ip_list = ["10.10.65.252"]
+public_ip_list = [ "10.87.65.232","10.87.65.233","10.87.65.234"]
+private_ip_list = ["10.10.65.232","10.10.65.233","10.10.65.234"]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-    (1..1).each do |id|
+    (1..3).each do |id|
         host_name  = ( "centos-contrail-" + id.to_s ).to_sym
         # ##############################
         # ## Packet Forwarding Engine ##
         # ##############################
         config.vm.define host_name do |host|
             host.vm.box = "centos/7"
-            #host.vm.hostname = host_name
+            host.vm.hostname = host_name
 
             # DO NOT REMOVE / NO VMtools installed
             host.vm.synced_folder '.', '/vagrant'
@@ -42,8 +42,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
             #   inline: "eval `route -n | awk '{ if ($8 ==\"enp0s3\" && $2 != \"0.0.0.0\") print \"ip route del default gw \" $2; }'`"
             host.vm.provision "shell",
                path: "scripts/install_kubernetes_on_centos.sh"
-            #host.vm.provision "shell",
-            #   path: "scripts/enable_insecure_registry.sh"
+            host.vm.provision "shell",
+               path: "scripts/enable_insecure_registry.sh"
             host.vm.provision "shell",
                path: "scripts/hosts.sh"
             host.vm.provision "shell",
@@ -52,8 +52,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                path: "scripts/ntp.sh"
             host.vm.provision "shell",
                path: "scripts/enable_root_login.sh"
-            host.vm.provision "shell",
-               path: "scripts/enable_firewall_ports.sh"
+            #host.vm.provision "shell",
+            #   path: "scripts/enable_firewall_ports.sh"
         end
     end
 end

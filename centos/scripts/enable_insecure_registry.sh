@@ -3,7 +3,7 @@
 #login as root
 sudo bash -c 'cat <<EOF >>/etc/docker/daemon.json
 {
-"insecure-registries" : ["10.87.65.230:5000"]
+"insecure-registries" : ["ci-repo.englab.juniper.net:5000"]
 }
 EOF'
 
