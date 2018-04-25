@@ -2,7 +2,10 @@
 This Vagarant File will bring up 4 VM's
 Please update the Private and Public IP list for your setup in Vagrant File 
 
-public_ip_list = [ "10.87.65.232","10.87.65.233","10.87.65.234"]
+
+public_ip_list = [ "10.87.65.232","10.87.65.233","10.87.65.234"] 
+
+
 private_ip_list = ["10.10.65.232","10.10.65.233","10.10.65.234"]
 
 Once the IP's are updated use the vagrant up command to bring up the VM's 
